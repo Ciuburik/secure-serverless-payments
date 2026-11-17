@@ -1,0 +1,19 @@
+node_modules/
+.DS_Store
+dist/
+
+# Env files (never commit secrets)
+.env
+.env.*
+!.env.example
+
+# Build artefact archives
+*.zip
+
+# Local Netlify folder
+.netlify
+
+# Local agent store (Netlify Blobs fallback)
+.agent-store/
+
+*.log

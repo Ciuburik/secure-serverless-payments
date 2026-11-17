@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact | Bucurie Digital</title>
+  <meta name="description" content="Request a Bucurie Digital consultation for digital identity protection, account safety, cyber risk assessment, or ISO 27001 readiness support.">
+  <link rel="canonical" href="https://bucuriedigital.com/contact.html">
+  <meta property="og:title" content="Contact | Bucurie Digital">
+  <meta property="og:description" content="Request a consultation for ethical digital identity protection and small business cybersecurity support.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://bucuriedigital.com/contact.html">
+  <meta property="og:image" content="https://bucuriedigital.com/assets/identity-protection-hero.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/style.css">
+  <script type="module" src="/script.js"></script>
+</head>
+
+<body>
+
+<header>
+  <nav class="site-nav">
+    <a class="brand" href="index.html">Bucurie Digital</a>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="pricing.html">Pricing</a>
+      <a href="contact.html">Contact</a>
+      <button class="theme-toggle" type="button" aria-label="Toggle color theme">Theme</button>
+    </div>
+  </nav>
+
+  <div class="hero compact">
+    <p class="eyebrow">Private, advisory support</p>
+    <h1>Request a Consultation</h1>
+    <p>Share the situation at a high level only. Do not include passwords, recovery codes, authentication codes, private IDs, or sensitive client data.</p>
+  </div>
+</header>
+
+<main>
+  <section class="contact-layout">
+    <form id="consultation-form">
+      <label for="name">Your name</label>
+      <input id="name" type="text" name="name" autocomplete="name" required>
+
+      <label for="business">Business or profile name</label>
+      <input id="business" type="text" name="business" autocomplete="organization">
+
+      <label for="email">Your email</label>
+      <input id="email" type="email" name="email" autocomplete="email" required>
+
+      <label for="service">Service interest</label>
+      <select id="service" name="service">
+        <option value="general">Not sure yet</option>
+        <option value="identity-audit">Identity Security Audit</option>
+        <option value="account-hardening">Account Hardening</option>
+        <option value="recovery-guidance">Recovery Guidance</option>
+        <option value="healthcheck">Cybersecurity Health Check</option>
+        <option value="risk">Cyber Risk Assessment</option>
+        <option value="iso">ISO 27001 Readiness Review</option>
+      </select>
+
+      <label for="message">Briefly describe your situation</label>
+      <textarea id="message" name="message" rows="6" required></textarea>
+
+      <label class="checkbox">
+        <input type="checkbox" name="advisory_acknowledgement" required>
+        I understand this service is advisory only and I must not share passwords, private keys, or authentication codes.
+      </label>
+
+      <div class="hp" aria-hidden="true">
+        <label for="company_website">Company website</label>
+        <input id="company_website" type="text" name="company_website" tabindex="-1" autocomplete="off">
+      </div>
+      <input type="hidden" name="js_check" value="">
+
+      <button type="submit">Send Request</button>
+      <p class="form-note">
+        We use your details only to respond to this request. See our <a href="privacy.html">Privacy Policy</a>.
+      </p>
+      <p id="form-status" class="form-status" aria-live="polite"></p>
+    </form>
+
+    <aside class="contact-panel">
+      <h2>What happens next</h2>
+      <p>Your request is reviewed and you get a reply by email.</p>
+      <ul class="feature-list">
+        <li>We check whether one of our services fits your situation</li>
+        <li>We suggest a starting point and explain what it covers</li>
+        <li>Nothing is charged until you choose a service</li>
+        <li>We never ask for passwords or security codes</li>
+      </ul>
+    </aside>
+  </section>
+
+  <section class="band">
+    <h2>Keep your message safe</h2>
+    <div class="trust-list">
+      <div>Do not share passwords</div>
+      <div>Do not share 2FA codes</div>
+      <div>Do not include private IDs</div>
+      <div>Include platform, urgency, and goal</div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  © 2026 · Bucurie Digital · <a href="privacy.html">Privacy</a> · <a href="terms.html">Terms &amp; refunds</a> · <a href="mailto:contact@bucuriedigital.com">contact@bucuriedigital.com</a>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,33 @@
+{
+  "name": "secure-serverless-payments",
+  "version": "1.0.0",
+  "description": "Static site + Netlify Functions with hardened Stripe payments, owner notifications and a guard-railed AI agent workflow.",
+  "homepage": "https://bucuriedigital.com/",
+  "scripts": {
+    "dev": "vite --host 127.0.0.1",
+    "build": "vite build",
+    "preview": "vite preview --host 127.0.0.1",
+    "check": "npm run check:html && npm run check:js && npm run check:functions && npm run check:legal",
+    "check:html": "htmlhint \"*.html\"",
+    "check:js": "node --check script.js",
+    "check:functions": "find netlify/functions -name '*.js' -exec node --check {} +",
+    "check:legal": "node scripts/check-placeholders.mjs",
+    "deploy:ready": "npm run check && npm run build",
+    "stripe:smoke": "node scripts/stripe-smoke.mjs",
+    "gmail:auth": "node scripts/gmail-auth.mjs"
+  },
+  "keywords": [],
+  "author": "Ionut Eugen Bucur",
+  "license": "MIT",
+  "type": "module",
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.121.0",
+    "@netlify/blobs": "^11.0.1",
+    "stripe": "^22.3.0"
+  },
+  "devDependencies": {
+    "htmlhint": "^1.9.2",
+    "vite": "^8.1.0"
+  },
+  "private": true
+}

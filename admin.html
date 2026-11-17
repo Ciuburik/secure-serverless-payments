@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Agent Console | Bucurie Digital</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/style.css">
+  <script type="module" src="/admin.js"></script>
+</head>
+
+<body>
+
+<header>
+  <nav class="site-nav">
+    <span class="brand">Bucurie Digital · Agent Console</span>
+    <div class="nav-links">
+      <button class="theme-toggle" type="button" aria-label="Toggle color theme">Theme</button>
+      <button type="button" data-logout>Sign out</button>
+    </div>
+  </nav>
+</header>
+
+<main>
+  <section id="login" hidden>
+    <div class="section-intro">
+      <p class="eyebrow">Restricted</p>
+      <h1>Agent Console</h1>
+      <p>Enter the admin token to continue.</p>
+    </div>
+    <form data-login-form>
+      <label for="token">Admin token</label>
+      <input id="token" type="password" autocomplete="current-password" required>
+      <button type="submit">Unlock</button>
+      <p class="form-status" data-login-status aria-live="polite"></p>
+    </form>
+  </section>
+
+  <section id="console" hidden>
+    <div class="cta admin-statusbar">
+      <div>
+        <p class="eyebrow">System</p>
+        <div data-status>Loading…</div>
+      </div>
+      <button type="button" data-kill>Toggle kill switch</button>
+    </div>
+
+    <div class="nav-links admin-tabs" role="tablist">
+      <button type="button" data-tab="approvals" aria-current="page">Approvals</button>
+      <button type="button" data-tab="queue">Queue</button>
+      <button type="button" data-tab="audit">Audit</button>
+      <button type="button" data-tab="crm">CRM</button>
+    </div>
+
+    <div data-panel aria-live="polite">Loading…</div>
+  </section>
+</main>
+
+<footer>© 2026 · Bucurie Digital</footer>
+
+</body>
+</html>

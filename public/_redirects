@@ -1,0 +1,13 @@
+http://bucuriedigital.com/* https://bucuriedigital.com/:splat 301!
+http://www.bucuriedigital.com/* https://bucuriedigital.com/:splat 301!
+https://www.bucuriedigital.com/* https://bucuriedigital.com/:splat 301!
+/api/contact /.netlify/functions/contact 200!
+/api/create-checkout-session /.netlify/functions/create-checkout-session 200!
+/api/checkout-session /.netlify/functions/get-checkout-session 200!
+/api/webhook /.netlify/functions/webhook 200!
+/api/health /.netlify/functions/health 200!
+/pricing /pricing.html 200
+/contact /contact.html 200
+/privacy /privacy.html 200
+/terms /terms.html 200
+/favicon.ico /favicon.svg 200
