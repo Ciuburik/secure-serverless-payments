@@ -1,6 +1,7 @@
 import crypto from 'crypto';
 import { json } from './_shared.js';
-import { store, TASKS, AUDIT, CRM, CONFIG, connectBlobs } from './_blobs.js';
+import { store, TASKS, AUDIT, CRM, connectBlobs } from './_blobs.js';
+import { agentStatus, setKillSwitch } from './_agent-status.js';
 import { sendEmail, gmailConfigured } from './_gmail.js';
 import { scanEmail } from './_guardrails.js';
 import { logger } from './_log.js';
@@ -29,23 +30,6 @@ async function listRecords(prefix, limit = 50) {
   return out;
 }
 
-async function status() {
-  const cfg = store(CONFIG);
-  const kill = (await cfg.get('killswitch', { type: 'json' })) || { on: false };
-  const rate = (await cfg.get('rate/global', { type: 'json' })) || { windowStart: 0, count: 0 };
-  const pending = (await store(TASKS).list({ prefix: 'pending/' })).blobs.length;
-  const approvals = (await store(TASKS).list({ prefix: 'approvals/' })).blobs.length;
-  return {
-    mode: (process.env.AGENT_MODE || 'dry-run').toLowerCase(),
-    killSwitch: Boolean(kill.on),
-    gmailConfigured: gmailConfigured(),
-    anthropicConfigured: Boolean(process.env.ANTHROPIC_API_KEY),
-    pendingTasks: pending,
-    awaitingApproval: approvals,
-    emailsSentThisHour: Date.now() - rate.windowStart < 3600000 ? rate.count : 0
-  };
-}
-
 export async function handler(event) {
   const rid = log.requestId();
   connectBlobs(event);
@@ -59,7 +43,11 @@ export async function handler(event) {
     const view = (event.queryStringParameters?.view || 'status').toLowerCase();
     const limit = Math.min(Number(event.queryStringParameters?.limit || 50), 200);
 
-    if (view === 'status') return json(200, await status());
+    if (view === 'status') {
+      const current = await agentStatus();
+      delete current.killSwitchChangedAt;
+      return json(200, current);
+    }
     if (view === 'queue') return json(200, { tasks: await listRecords('pending/', limit) });
     if (view === 'approvals') return json(200, { approvals: await listRecords('approvals/', limit) });
     if (view === 'audit') {
@@ -91,7 +79,7 @@ export async function handler(event) {
 
     if (body.action === 'killswitch') {
       log.warn('killswitch-toggled', { rid, on: Boolean(body.on) });
-      await store(CONFIG).setJSON('killswitch', { on: Boolean(body.on), at: new Date().toISOString() });
+      await setKillSwitch(body.on);
       return json(200, { killSwitch: Boolean(body.on) });
     }
 
